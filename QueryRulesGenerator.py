@@ -56,7 +56,3 @@ class QueryRulesGenerator:
         else:
             self.__generate_FALGIN_FLAGOUT_query_rules__(number_of_shards, query_file_name, no_backend)
         return query_file_name
-
-if __name__ == "__main__":
-    query_rules_generator = QueryRulesGenerator()
-    query_rules_generator.generate(with_FLAGIN_FLAGOUT=True)
