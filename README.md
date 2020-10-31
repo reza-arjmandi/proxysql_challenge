@@ -41,22 +41,22 @@
 
 * The result that I've achieved:
 
-* query rules without flagIN and flagOUT and with backend server:
+* Query rules without flagIN and flagOUT and with backend server:
 1. Average number of seconds to run all queries: 10.002 seconds
 2. Minimum number of seconds to run all queries: 10.002 seconds
 3. Maximum number of seconds to run all queries: 10.002 seconds
 
-* query rules with flagIN and flagOUT and with backend server:
+* Query rules with flagIN and flagOUT and with backend server:
 1. Average number of seconds to run all queries: 10.001 seconds
 2. Minimum number of seconds to run all queries: 10.001 seconds
 3. Maximum number of seconds to run all queries: 10.001 seconds
 
-* query rules without flagIN and flagOUT and without backend server: 
+* Query rules without flagIN and flagOUT and without backend server: 
 1. Average number of seconds to run all queries: 48.494 seconds
 2. Minimum number of seconds to run all queries: 48.494 seconds
 3. Maximum number of seconds to run all queries: 48.494 seconds
 
-* query rules with flagIN and flagOUT and without backend server: 
+* Query rules with flagIN and flagOUT and without backend server: 
 1. Average number of seconds to run all queries: 32.666 seconds
 2. Minimum number of seconds to run all queries: 32.666 seconds
 3. Maximum number of seconds to run all queries: 32.666 seconds
