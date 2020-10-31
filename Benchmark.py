@@ -28,13 +28,13 @@ class Benchmark:
     def run_scenarios(self, FLAGIN_FLAGOUT, no_backend):
         query_rules_file = self.query_rules_generator.generate(with_FLAGIN_FLAGOUT = FLAGIN_FLAGOUT, no_backend=no_backend)
 
-        command = f'mysql -u {self.proxysql_user} -p{self.proxysql_password} -h {self.host} -P{self.proxysql_admin_port} < {query_rules_file}'
-        proxysql_process = subprocess.Popen(command, shell=True)
+        proxysql_process_command = f'mysql -u {self.proxysql_user} -p{self.proxysql_password} -h {self.host} -P{self.proxysql_admin_port} < {query_rules_file}'
+        proxysql_process = subprocess.Popen(proxysql_process_command, shell=True)
         proxysql_process.wait()
 
         queries_file = self.query_generator.generate()
-
-        sqlslap_process = subprocess.Popen(f'mysqlslap -u {self.mysql_user} -p{self.mysql_password} -h {self.host} -P{self.proxysql_interface_port} --create-schema=information_schema -c {self.number_of_connections} -q {queries_file}', shell=True, stdout=subprocess.PIPE)
+        sqlslap_process_command = f'mysqlslap -u {self.mysql_user} -p{self.mysql_password} -h {self.host} -P{self.proxysql_interface_port} --create-schema=information_schema -c {self.number_of_connections} -q {queries_file}'
+        sqlslap_process = subprocess.Popen(sqlslap_process_command, shell=True, stdout=subprocess.PIPE)
 
         for line in sqlslap_process.stdout.readlines():
             self.__print_line__(str(line))
