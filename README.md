@@ -1,4 +1,4 @@
-# ProxySQL Challenge
+# ProxySQL Benchmark
 
 ## Requirements
 * Python 3
@@ -37,4 +37,26 @@
 
 * python3 Benchmark.py
 
+## Conclusion
 
+* The result that I've achieved:
+
+* query rules without flagIN and flagOUT and with backend server:
+Average number of seconds to run all queries: 10.002 seconds
+Minimum number of seconds to run all queries: 10.002 seconds
+Maximum number of seconds to run all queries: 10.002 seconds
+
+* query rules with flagIN and flagOUT and with backend server:
+Average number of seconds to run all queries: 10.001 seconds
+Minimum number of seconds to run all queries: 10.001 seconds
+Maximum number of seconds to run all queries: 10.001 seconds
+
+* query rules without flagIN and flagOUT and without backend server: 
+Average number of seconds to run all queries: 48.494 seconds
+Minimum number of seconds to run all queries: 48.494 seconds
+Maximum number of seconds to run all queries: 48.494 seconds
+
+* query rules with flagIN and flagOUT and without backend server: 
+Average number of seconds to run all queries: 32.666 seconds
+Minimum number of seconds to run all queries: 32.666 seconds
+Maximum number of seconds to run all queries: 32.666 seconds
