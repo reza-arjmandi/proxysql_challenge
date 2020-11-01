@@ -15,7 +15,7 @@
 * dbdeployer deploy replication 5.7.31 --read-only-slaves
 
 Run the following command to see the sandboxe's ports:
-* dbdeployer sandboxes
+* dbdeployer sandboxes  
 output: rsandbox_5_7_31 : master-slave 5.7.31 [19832 19833 19834 ]
   
 ### Configure ProxySQL
