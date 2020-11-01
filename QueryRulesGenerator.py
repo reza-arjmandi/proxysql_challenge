@@ -34,10 +34,10 @@ class QueryRulesGenerator:
 
         columns =\
             "(active, \
-            match_pattern, \
-            apply, \
-            destination_hostgroup, \
-            OK_msg)"
+match_pattern, \
+apply, \
+destination_hostgroup, \
+OK_msg)"
         destination_hostgroup = 1
         ok_msg = f'""' if no_backend else 'NULL'
 
@@ -47,12 +47,12 @@ class QueryRulesGenerator:
             apply = 1
             values =\
                 f"values (\
-                    {active}, \
-                    {match_pattern}, \
-                    {apply}, \
-                    {destination_hostgroup}, \
-                    {ok_msg}\
-                        )"
+{active}, \
+{match_pattern}, \
+{apply}, \
+{destination_hostgroup}, \
+{ok_msg}\
+)"
             query_file.write(f"{self.insert_statement} {columns} {values};\n")
 
     def __make_B_tree__(
@@ -68,12 +68,12 @@ class QueryRulesGenerator:
             return
 
         columns = "(active, \
-            match_pattern, \
-            flagIN, \
-            flagOUT, \
-            apply, \
-            destination_hostgroup, \
-            OK_msg)"
+match_pattern, \
+flagIN, \
+flagOUT, \
+apply, \
+destination_hostgroup, \
+OK_msg)"
         active = 1
         
         if _range[1] - _range[0] == 1:
@@ -81,39 +81,39 @@ class QueryRulesGenerator:
             flag_out_ = 0
             apply = 1
             values = f"values (\
-                {active}, \
-                {match_pattern}, \
-                {flag_in}, \
-                {flag_out_}, \
-                {apply}, \
-                {destination_hostgroup}, \
-                {ok_msg}\
-                    )"
+{active}, \
+{match_pattern}, \
+{flag_in}, \
+{flag_out_}, \
+{apply}, \
+{destination_hostgroup}, \
+{ok_msg}\
+)"
             query_file.write(f"{self.insert_statement} {columns} {values};\n")
             
             match_pattern = f"'\/\* {_range[1]}'"
             values = f"values (\
-                {active}, \
-                {match_pattern}, \
-                {flag_in}, \
-                {flag_out_}, \
-                {apply}, \
-                {destination_hostgroup}, \
-                {ok_msg})"
+{active}, \
+{match_pattern}, \
+{flag_in}, \
+{flag_out_}, \
+{apply}, \
+{destination_hostgroup}, \
+{ok_msg})"
             query_file.write(f"{self.insert_statement} {columns} {values};\n")
             return
         
         match_pattern = f"'\/\* [{_range[0]}-{_range[1]}]'"
         apply = 1
         values = f"values (\
-            {active}, \
-            {match_pattern}, \
-            {flag_in}, \
-            {flag_out}, \
-            {apply}, \
-            {destination_hostgroup}, \
-            {ok_msg}\
-                )"
+{active}, \
+{match_pattern}, \
+{flag_in}, \
+{flag_out}, \
+{apply}, \
+{destination_hostgroup}, \
+{ok_msg}\
+)"
         query_file.write(f"{self.insert_statement} {columns} {values};\n")
         range_down = [_range[0], math.floor((_range[0] + _range[1]) / 2)]
         self.__make_B_tree__(

@@ -8,5 +8,5 @@ class QueryGenerator:
             for i in range(number_of_queries):
                 queries_file.write(
                     f"/* {random. randint(0,200):03} */ \
-                        select 'test' from dual;\n")
+select 'test' from dual;\n")
         return queries_file_name
