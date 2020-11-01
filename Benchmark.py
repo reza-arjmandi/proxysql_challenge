@@ -1,4 +1,5 @@
 import subprocess
+import re
 
 from QueryGenerator import QueryGenerator
 from QueryRulesGenerator import  QueryRulesGenerator
@@ -18,13 +19,10 @@ class Benchmark:
         self.host = '127.0.0.1'
 
     def __print_line__(self, str):
-        if str.find("Average number of seconds to run all queries:") != -1\
-            or str.find("Minimum number of seconds to run all queries:") != -1\
-            or str.find("Maximum number of seconds to run all queries:") != -1\
-            or str.find("Number of clients running queries:") != -1\
-            or str.find("Average number of queries per client:") != -1:
-            print(str)
-
+        match_obj = re.match( r'^.*([AM].*): (.*) seconds.*$', str)
+        if match_obj:
+            print(f"{match_obj.group(1)}: {match_obj.group(2)} seconds")
+        
     def run_scenarios(self, FLAGIN_FLAGOUT, no_backend):
         query_rules_file = self.query_rules_generator.generate(with_FLAGIN_FLAGOUT = FLAGIN_FLAGOUT, no_backend=no_backend)
 
@@ -64,8 +62,3 @@ if __name__ == "__main__":
     print('query rules with flagIN and flagOUT and without backend server')
     print('******************************************************************')
     benchmark.run_scenarios(FLAGIN_FLAGOUT = True, no_backend=True)
-
-
-
-
-        
