@@ -23,8 +23,11 @@ class Benchmark:
         if match_obj:
             print(f"{match_obj.group(1)}: {match_obj.group(2)} seconds")
         
-    def run_scenarios(self, FLAGIN_FLAGOUT, no_backend):
-        query_rules_file = self.query_rules_generator.generate(with_FLAGIN_FLAGOUT = FLAGIN_FLAGOUT, no_backend=no_backend)
+    def run_scenarios(self, FLAGIN_FLAGOUT=False, no_backend=False, without_query_rules=False):
+        query_rules_file = self.query_rules_generator.generate(
+            with_FLAGIN_FLAGOUT = FLAGIN_FLAGOUT, 
+            no_backend=no_backend, 
+            without_query_rules = without_query_rules)
 
         proxysql_process_command = f'mysql -u {self.proxysql_user} -p{self.proxysql_password} -h {self.host} -P{self.proxysql_admin_port} < {query_rules_file}'
         proxysql_process = subprocess.Popen(proxysql_process_command, shell=True)
@@ -62,3 +65,8 @@ if __name__ == "__main__":
     print('query rules with flagIN and flagOUT and without backend server')
     print('******************************************************************')
     benchmark.run_scenarios(FLAGIN_FLAGOUT = True, no_backend=True)
+
+    print('******************************************************************')
+    print('Without query rules')
+    print('******************************************************************')
+    benchmark.run_scenarios(without_query_rules=True)
