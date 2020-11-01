@@ -13,6 +13,10 @@
 * dbdeployer downloads get-by-version 5.7 --newest
 * dbdeployer unpack mysql-5.7.31-linux-glibc2.12-x86_64.tar.gz
 * dbdeployer deploy replication 5.7.31 --read-only-slaves
+
+Run the following command to see the sandboxe's ports:
+* dbdeployer sandboxes
+output: rsandbox_5_7_31 : master-slave 5.7.31 [19832 19833 19834 ]
   
 ### Configure ProxySQL
 
@@ -42,21 +46,26 @@
 * The result that I've achieved:
 
 * Query rules without flagIN and flagOUT and with backend server:
-1. Average number of seconds to run all queries: 10.002 seconds
-2. Minimum number of seconds to run all queries: 10.002 seconds
-3. Maximum number of seconds to run all queries: 10.002 seconds
+1. Average number of seconds to run all queries: 144.223 seconds
+2. Minimum number of seconds to run all queries: 144.223 seconds
+3. Maximum number of seconds to run all queries: 144.223 seconds
 
 * Query rules with flagIN and flagOUT and with backend server:
-1. Average number of seconds to run all queries: 10.001 seconds
-2. Minimum number of seconds to run all queries: 10.001 seconds
-3. Maximum number of seconds to run all queries: 10.001 seconds
+1. Average number of seconds to run all queries: 77.044 seconds
+2. Minimum number of seconds to run all queries: 77.044 seconds
+3. Maximum number of seconds to run all queries: 77.044 seconds
 
 * Query rules without flagIN and flagOUT and without backend server: 
-1. Average number of seconds to run all queries: 48.494 seconds
-2. Minimum number of seconds to run all queries: 48.494 seconds
-3. Maximum number of seconds to run all queries: 48.494 seconds
+1. Average number of seconds to run all queries: 47.922 seconds
+2. Minimum number of seconds to run all queries: 47.922 seconds
+3. Maximum number of seconds to run all queries: 47.922 seconds
 
 * Query rules with flagIN and flagOUT and without backend server: 
-1. Average number of seconds to run all queries: 32.666 seconds
-2. Minimum number of seconds to run all queries: 32.666 seconds
-3. Maximum number of seconds to run all queries: 32.666 seconds
+1. Average number of seconds to run all queries: 23.011 seconds
+2. Minimum number of seconds to run all queries: 23.011 seconds
+3. Minimum number of seconds to run all queries: 23.011 seconds
+
+* Without query rules:
+1. Average number of seconds to run all queries: 77.145 seconds
+2. Minimum number of seconds to run all queries: 77.145 seconds
+3. Maximum number of seconds to run all queries: 77.145 seconds
