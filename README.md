@@ -69,3 +69,7 @@ output: rsandbox_5_7_31 : master-slave 5.7.31 [19832 19833 19834 ]
 1. Average number of seconds to run all queries: 77.145 seconds
 2. Minimum number of seconds to run all queries: 77.145 seconds
 3. Maximum number of seconds to run all queries: 77.145 seconds
+
+The above result shows the claim "performance was the same with using FLAGIN and FLAGOUT (creating a B-Tree)" is not correct.
+The above result shows the performance with flagIN and flagOUT(creating a B-Tree) is better, either use of backend connections or not.  
+

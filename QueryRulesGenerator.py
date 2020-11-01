@@ -22,7 +22,7 @@ class QueryRulesGenerator:
                     if no_backend \
                         else "with_backend"
         else:
-            query_file_name += "with_query_rules"
+            query_file_name = "without_query_rules"
         query_file_name += ".sql"
         return query_file_name
 
