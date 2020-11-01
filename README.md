@@ -46,29 +46,29 @@ output: rsandbox_5_7_31 : master-slave 5.7.31 [19832 19833 19834 ]
 * The result that I've achieved:
 
 * Query rules without flagIN and flagOUT and with backend server:
-1. Average number of seconds to run all queries: 144.223 seconds
-2. Minimum number of seconds to run all queries: 144.223 seconds
-3. Maximum number of seconds to run all queries: 144.223 seconds
+1. Average number of seconds to run all queries: 102.655 seconds
+2. Minimum number of seconds to run all queries: 102.655 seconds
+3. Maximum number of seconds to run all queries: 102.655 seconds
 
 * Query rules with flagIN and flagOUT and with backend server:
-1. Average number of seconds to run all queries: 77.044 seconds
-2. Minimum number of seconds to run all queries: 77.044 seconds
-3. Maximum number of seconds to run all queries: 77.044 seconds
+1. Average number of seconds to run all queries: 90.047 seconds
+2. Minimum number of seconds to run all queries: 90.047 seconds
+3. Maximum number of seconds to run all queries: 90.047 seconds
 
 * Query rules without flagIN and flagOUT and without backend server: 
-1. Average number of seconds to run all queries: 47.922 seconds
-2. Minimum number of seconds to run all queries: 47.922 seconds
-3. Maximum number of seconds to run all queries: 47.922 seconds
+1. Average number of seconds to run all queries: 60.858 seconds
+2. Minimum number of seconds to run all queries: 60.858 seconds
+3. Maximum number of seconds to run all queries: 60.858 seconds
 
 * Query rules with flagIN and flagOUT and without backend server: 
-1. Average number of seconds to run all queries: 23.011 seconds
-2. Minimum number of seconds to run all queries: 23.011 seconds
-3. Minimum number of seconds to run all queries: 23.011 seconds
+1. Average number of seconds to run all queries: 35.176 seconds
+2. Minimum number of seconds to run all queries: 35.176 seconds
+3. Minimum number of seconds to run all queries: 35.176 seconds
 
 * Without query rules:
-1. Average number of seconds to run all queries: 77.145 seconds
-2. Minimum number of seconds to run all queries: 77.145 seconds
-3. Maximum number of seconds to run all queries: 77.145 seconds
+1. Average number of seconds to run all queries: 79.031 seconds
+2. Minimum number of seconds to run all queries: 79.031 seconds
+3. Maximum number of seconds to run all queries: 79.031 seconds
 
 The above result shows the claim "performance was the same with using FLAGIN and FLAGOUT (creating a B-Tree)" is not correct.
 The above result shows the performance with flagIN and flagOUT(creating a B-Tree) is better, either use of backend connections or not.  
