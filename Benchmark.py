@@ -45,8 +45,9 @@ class Benchmark:
             stderr=FNULL)
         proxysql_process.wait()
 
-    def __load_tests__(self):
-        queries_file = self.query_generator.generate()
+    def __load_tests__(self, distribution):
+        queries_file = self.query_generator.generate(
+            distribution=distribution)
         sqlslap_process_command =\
             f'mysqlslap \
                 -u {self.mysql_user} \
@@ -70,33 +71,61 @@ class Benchmark:
         self, 
         FLAGIN_FLAGOUT=False, 
         no_backend=False, 
-        without_query_rules=False):
+        without_query_rules=False,
+        distribution='normal'):
 
         self.__apply_query_rules_to_proxy_sql__(
             FLAGIN_FLAGOUT, 
             no_backend, 
             without_query_rules)
-        self.__load_tests__()
+        self.__load_tests__(distribution)
 
 if __name__ == "__main__":
     query_generator = QueryGenerator()
     query_rules_generator = QueryRulesGenerator()
     benchmark = Benchmark(query_generator, query_rules_generator)
-
-    print('******************************************************************')
+    print('----------------------Normal Distribution-------------------------')
     print('query rules without flagIN and flagOUT and with backend server')
-    benchmark.run_scenarios(FLAGIN_FLAGOUT = False, no_backend=False)
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = False, no_backend=False, distribution='normal')
     print('******************************************************************')
     print('query rules with flagIN and flagOUT and with backend server')
-    benchmark.run_scenarios(FLAGIN_FLAGOUT = True, no_backend=False)
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = True, no_backend=False, distribution='normal')
 
     print('******************************************************************')
     print('query rules without flagIN and flagOUT and without backend server')
-    benchmark.run_scenarios(FLAGIN_FLAGOUT = False, no_backend=True)
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = False, no_backend=True, distribution='normal')
     print('******************************************************************')
     print('query rules with flagIN and flagOUT and without backend server')
-    benchmark.run_scenarios(FLAGIN_FLAGOUT = True, no_backend=True)
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = True, no_backend=True, distribution='normal')
 
     print('******************************************************************')
-    print('Without query rules')
-    benchmark.run_scenarios(without_query_rules=True)
+    print('Without query rules with backend server')
+    benchmark.run_scenarios(
+        without_query_rules=True, distribution='normal')
+
+    print('----------------------Exponential Distribution--------------------')
+    print('query rules without flagIN and flagOUT and with backend server')
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = False, no_backend=False, distribution='exponential')
+    print('******************************************************************')
+    print('query rules with flagIN and flagOUT and with backend server')
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = True, no_backend=False, distribution='exponential')
+
+    print('******************************************************************')
+    print('query rules without flagIN and flagOUT and without backend server')
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = False, no_backend=True, distribution='exponential')
+    print('******************************************************************')
+    print('query rules with flagIN and flagOUT and without backend server')
+    benchmark.run_scenarios(
+        FLAGIN_FLAGOUT = True, no_backend=True, distribution='exponential')
+
+    print('******************************************************************')
+    print('Without query rules with backend server')
+    benchmark.run_scenarios(
+        without_query_rules=True, distribution='exponential')
