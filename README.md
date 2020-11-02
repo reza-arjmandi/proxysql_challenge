@@ -43,33 +43,61 @@ output: rsandbox_5_7_31 : master-slave 5.7.31 [19832 19833 19834 ]
 
 ## Conclusion
 
-* The result that I've achieved:
+The performance of the B-Tree solution really depends on the distribution of input queries. If we generate queries with normal distribution, it’s very obvious in this case (normal distribution), B-Tree solution has better performance as you can see in the following result that I’ve got from my Benchmark program:
 
-* Query rules without flagIN and flagOUT and with backend server:
-1. Average number of seconds to run all queries: 102.655 seconds
-2. Minimum number of seconds to run all queries: 102.655 seconds
-3. Maximum number of seconds to run all queries: 102.655 seconds
+### Normal Distribution
 
-* Query rules with flagIN and flagOUT and with backend server:
-1. Average number of seconds to run all queries: 90.047 seconds
-2. Minimum number of seconds to run all queries: 90.047 seconds
-3. Maximum number of seconds to run all queries: 90.047 seconds
+* query rules without flagIN and flagOUT and with backend server
+1. Average number of seconds to run all queries: 105.597 seconds
+2. Minimum number of seconds to run all queries: 105.597 seconds
+3. Maximum number of seconds to run all queries: 105.597 seconds
 
-* Query rules without flagIN and flagOUT and without backend server: 
-1. Average number of seconds to run all queries: 60.858 seconds
-2. Minimum number of seconds to run all queries: 60.858 seconds
-3. Maximum number of seconds to run all queries: 60.858 seconds
+* query rules with flagIN and flagOUT and with backend server
+1. Average number of seconds to run all queries: 92.093 seconds
+2. Minimum number of seconds to run all queries: 92.093 seconds
+3. Maximum number of seconds to run all queries: 92.093 seconds
 
-* Query rules with flagIN and flagOUT and without backend server: 
-1. Average number of seconds to run all queries: 35.176 seconds
-2. Minimum number of seconds to run all queries: 35.176 seconds
-3. Minimum number of seconds to run all queries: 35.176 seconds
+* query rules without flagIN and flagOUT and without backend server
+1. Average number of seconds to run all queries: 49.865 seconds
+2. Minimum number of seconds to run all queries: 49.865 seconds
+3. Maximum number of seconds to run all queries: 49.865 seconds
 
-* Without query rules:
-1. Average number of seconds to run all queries: 79.031 seconds
-2. Minimum number of seconds to run all queries: 79.031 seconds
-3. Maximum number of seconds to run all queries: 79.031 seconds
+* query rules with flagIN and flagOUT and without backend server
+1. Average number of seconds to run all queries: 27.775 seconds
+2. Minimum number of seconds to run all queries: 27.775 seconds
+3. Maximum number of seconds to run all queries: 27.775 seconds
 
-The above result shows the claim "performance was the same with using FLAGIN and FLAGOUT (creating a B-Tree)" is not correct.
-The above result shows the performance with flagIN and flagOUT(creating a B-Tree) is better, either use of backend connections or not.  
+* Without query rules with backend server
+1. Average number of seconds to run all queries: 80.509 seconds
+2. Minimum number of seconds to run all queries: 80.509 seconds
+3. Maximum number of seconds to run all queries: 80.509 seconds
+
+If we generate queries with exponential distribution. In this case you can see the performance of the B-Tree solution is the same as the other solution. You can see in the following result that I’ve got from my Benchmark program:
+
+### Exponential Distribution
+* query rules without flagIN and flagOUT and with backend server
+1. Average number of seconds to run all queries: 86.807 seconds
+2. Minimum number of seconds to run all queries: 86.807 seconds
+3. Maximum number of seconds to run all queries: 86.807 seconds
+
+* query rules with flagIN and flagOUT and with backend server
+1. Average number of seconds to run all queries: 87.982 seconds
+2. Minimum number of seconds to run all queries: 87.982 seconds
+3. Maximum number of seconds to run all queries: 87.982 seconds
+
+* query rules without flagIN and flagOUT and without backend server
+1. Average number of seconds to run all queries: 31.720 seconds
+2. Minimum number of seconds to run all queries: 31.720 seconds
+3. Maximum number of seconds to run all queries: 31.720 seconds
+
+* query rules with flagIN and flagOUT and without backend server
+1. Average number of seconds to run all queries: 30.517 seconds
+2. Minimum number of seconds to run all queries: 30.517 seconds
+3. Maximum number of seconds to run all queries: 30.517 seconds
+
+* Without query rules with backend server
+1. Average number of seconds to run all queries: 80.484 seconds
+2. Minimum number of seconds to run all queries: 80.484 seconds
+3. Maximum number of seconds to run all queries: 80.484 seconds
+
 
